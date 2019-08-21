@@ -26,5 +26,4 @@ function exe() { echo "\$ ${@/eval/}" ; "$@" ; }
 RUNFILES="${PYTHON_RUNFILES:-$(guess_runfiles)}"
 
 PYTHON_RUNFILES=${RUNFILES} %{resolve_script} | \
-  exe  %{kubectl_tool} --kubeconfig="%{kubeconfig}" --cluster="%{cluster}" \
-  --context="%{context}" --user="%{user}" %{namespace_arg} apply $@ -f -
+  exe  %{kubectl_tool} %{namespace_arg} apply $@ -f -
